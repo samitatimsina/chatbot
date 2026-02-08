@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React-Basics</title>
+    
+<body>
+
+    <div class="js-container"></div>
+
+
+    
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    
+    <script type="text/babel">
+     const container=document.querySelector('.js-container');
+     const root=ReactDOM.createRoot(container).render(<App />);
+     
+     
+    function App() {
+        return(
+            <>
+            <ProductDetails
+                imageSrc="socks.jpg"
+                name="Cotton socks"
+                price={10.90}
+                discountPrice={5.45}
+                />
+            <ProductDetails
+            imageSrc="basketball.jpg"
+                name="Basketballs"
+                price={6.00}
+                />
+            <ProductDetails
+            imageSrc="T-shirt.jpg"
+                name="Plain T-Shirt"
+                price={7.99}
+                
+                />
+
+            </>
+        );
+    }
+
+    function ProductDetails(props){
+        const { name,price,discountPrice,imageSrc } =props;
+        return (
+            <div style={{marginBottom:'20px'}}>
+                <img src={imageSrc} width="100"></img>
+                <p>{name}</p>
+                <p>
+                    Price:{""}
+                    {discountPrice?<del>${price.toFixed(2)}</del>:`$${price.toFixed(2)}`}
+                    </p>
+                    {discountPrice && (<p>Discount price: ${discountPrice.toFixed(2)}</p>)}
+                    <button>Add to Cart</button>
+                </div>
+            
+        );
+    }
+
+    
+     
+
+    </script>
+    
+
+</body>
+</html>
